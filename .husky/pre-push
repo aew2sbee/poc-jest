@@ -1,0 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# ステージングされたファイルのリストを取得
+STAGED_FILES=$(git diff --cached --name-only)
+
+# ステージングされたファイルに src/ または tests/ 内のものが含まれているかチェック
+if echo "$STAGED_FILES" | grep -q -E "^(src|tests)/"; then
+  echo "src/ または tests/ のファイルが変更されたため、テストを実行します。"
+  npm test
+else
+  echo "src/ または tests/ ディレクトリに変更がないため、テストをスキップします。"
+fi
