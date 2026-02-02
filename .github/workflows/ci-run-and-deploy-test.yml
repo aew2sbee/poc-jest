@@ -31,7 +31,8 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npm test
+        # JestでHTMLレポートを出力するようにフラグを立てるか、configで設定済みであることを確認してください
+        run: npm test -- --coverage --coverageDirectory="html-report"
         continue-on-error: true
 
       - name: Extract branch name
