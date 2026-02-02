@@ -42,6 +42,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html-report
+          publish_dir: ./output/html-report
           destination_dir: ${{ steps.extract_branch.outputs.branch }}
           keep_files: true
