@@ -6,10 +6,10 @@ on:
     branches:
       - '**'
     # src, test 配下、または jest.config.ts に変更があった場合のみ実行
-    paths:
-      - './src/**'
-      - './test/**'
-      - './jest.config.ts'
+    # paths:
+    #   - './src/**'
+    #   - './test/**'
+    #   - './jest.config.ts'
 
 permissions:
   contents: write
