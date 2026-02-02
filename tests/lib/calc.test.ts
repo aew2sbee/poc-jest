@@ -1,6 +1,6 @@
 import * as sut from "../../src/server/lib/calc";
 
-describe("sum", () => {
+describe("sum関数のテスト", () => {
   test("2つの数値を加算できる", () => {
     // 準備(Arrange)
     const arg01 = 1;
