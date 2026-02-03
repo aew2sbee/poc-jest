@@ -9,6 +9,7 @@ on:
       - 'src/**'
       - 'tests/**'
       - 'jest.config.ts'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -33,10 +34,12 @@ jobs:
         run: npm test
         continue-on-error: true
 
-      - name: Extract branch name
+      - name: Extract and sanitize branch name
         shell: bash
         id: extract_branch
-        run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | sed 's/\//-/g')
+          echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

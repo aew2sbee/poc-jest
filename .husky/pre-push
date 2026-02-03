@@ -1,11 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# ステージングされたファイルのリストを取得
-STAGED_FILES=$(git diff --cached --name-only)
+# プッシュされるコミットで変更されたファイルのリストを取得
+CHANGED_FILES=$(git diff --name-only @{u}..HEAD)
 
-# ステージングされたファイルに src/ または tests/ 内のものが含まれているかチェック
-if echo "$STAGED_FILES" | grep -q -E "^(src|tests)/"; then
+# 変更されたファイルに src/ または tests/ 内のものが含まれているかチェック
+if echo "$CHANGED_FILES" | grep -q -E "^(src|tests)/"; then
   echo "src/ または tests/ のファイルが変更されたため、テストを実行します。"
   npm test
 else
