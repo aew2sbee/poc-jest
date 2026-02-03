@@ -9,6 +9,7 @@ on:
       - 'src/**'
       - 'tests/**'
       - 'jest.config.ts'
+      - 'package.json'
   workflow_dispatch:
 
 permissions:
